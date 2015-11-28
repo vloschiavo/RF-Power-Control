@@ -29,8 +29,16 @@ if (! $cgi->param("FormSubmit") ) {
 	exit;
 }
 
-my @actions = grep s/^([a-dA-D][1-3][0-1])\z/$1/, $cgi->param;
+# grep for other actions
+my @actions = grep s/^([a-eA-E][1-3][0-1])\z/$1/, $cgi->param;
 ($action) = @actions;
+
+if ( $action eq "e11" ) {
+	# bash to turn on the thing, sleep for 1800 seconds, and turn off.
+	system ("/var/www/cgi-bin/a2timer.sh > /dev/null 2>&1 &");
+	&DisplayForm($action);
+	exit;
+}
 
 # Prepare the Serial Port
 use Device::SerialPort;
@@ -128,7 +136,6 @@ Previous command was $action<br><br>
 
 <b>Instructions:</b><br>
 1) Choose outlet state<br>
-2) Click Submit.<br>
 <br>
  <table style="width:100%">
   <tr>
@@ -142,9 +149,23 @@ Previous command was $action<br><br>
     <td><center><input type="submit" name="a10" value="a1 off"></center></td>
   </tr>
   <tr>
+    <td><center>Garage Filtered Fan</center></td>
+    <td><center><input type="submit" name="a21" value="a2 on"></center></td>
+    <td><center><input type="submit" name="a20" value="a2 off"></center></td>
+  </tr>
+  <tr>
+    <td><center>Garage Filtered Fan 30 Minute Timer for Outlet A2</center></td>
+    <td><center><input type="submit" name="e11" value="30 min"</center></td>
+  </tr>
+  <tr>
     <td><center>External Christmas Lights</center></td>
     <td><center><input type="submit" name="c21" value="c2 on"></center></td>
     <td><center><input type="submit" name="c20" value="c2 off"></center></td>
+  </tr>
+  <tr>
+    <td><center>External Outlet D2</center></td>
+    <td><center><input type="submit" name="d21" value="d2 on"></center></td>
+    <td><center><input type="submit" name="d20" value="d2 off"></center></td>
   </tr>
 </table> 
 <br><br><br>
@@ -179,6 +200,7 @@ External Christmas Lights
 <input type="submit" name="d11" value="d1 on">
 <input type="submit" name="d10" value="d1 off">
 <br><br>
+External Outlet D2
 <input type="submit" name="d21" value="d2 on">
 <input type="submit" name="d20" value="d2 off">
 <br><br>
