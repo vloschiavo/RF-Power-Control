@@ -1,0 +1,6 @@
+# External Christmas Lights
+35 05 * * * /home/vloschiavo/src/RF-Power-Control/cron/cron-power.sh d21 > /dev/null
+50 06 * * * /home/vloschiavo/src/RF-Power-Control/cron/cron-power.sh d20 > /dev/null
+
+50 16 * * * /home/vloschiavo/src/RF-Power-Control/cron/cron-power.sh d21 > /dev/null
+50 21 * * * /home/vloschiavo/src/RF-Power-Control/cron/cron-power.sh d20 > /dev/null
