@@ -35,7 +35,7 @@ my @actions = grep s/^([a-eA-E][1-3][0-1])\z/$1/, $cgi->param;
 
 if ( $action eq "e11" ) {
 	# bash to turn on the thing, sleep for 1800 seconds, and turn off.
-	system ("/var/www/cgi-bin/a2timer.sh > /dev/null 2>&1 &");
+	system ("/var/www/cgi-bin/timer.sh a2 1800 > /dev/null 2>&1 &");
 	&DisplayForm($action);
 	exit;
 }
