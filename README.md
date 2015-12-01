@@ -25,7 +25,7 @@ http://www.dx.com/p/tdl-9906a-315mhz-wireless-transmitter-module-green-126105#.V
 I used an Arduino Uno - since I had it on hand, but any microcontroller will work.  We'll be using the microcontroller to generate the pulses to emulate/replace the physical remotes you get with the outlets.
 http://www.dx.com/p/funduino-uno-r3-atmega328-development-board-for-arduino-384207#.VlziIiCrTJ8
 
-####Arduino Library
+####Modified Arduino Library
 I trimmed down the RCSwitch library since it had a ton of stuff I didn't need and I wanted to save memory space on the Arduino since I'm using it for a ton of stuff besides this RF transmitter project at the same time.  32k of Flash and 2k of SRAM doesn't go very far...
 https://github.com/sui77/rc-switch
 
