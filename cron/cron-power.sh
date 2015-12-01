@@ -5,5 +5,5 @@ echo "$!" > /tmp/a2sleep.pid
 sleep 2
 echo "Issuing $1"
 echo "$1" > /dev/ttyACM0
-kill `cat /tmp/a2sleep.pid`
+kill `cat /tmp/a2sleep.pid` > /dev/null
 rm /tmp/a2sleep.pid
